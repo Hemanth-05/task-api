@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local development server
-  - url: https://task-api-wyqa.onrender.com
+  - url: https://task-api-1-7ulu.onrender.com
     description: Production server on render
 tags:
   - name: Tasks
