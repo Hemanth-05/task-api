@@ -5,6 +5,12 @@ export async function getTasks(req, res, next) {
   res.json(tasks);
 }
 
+export async function getTasksById(req, res, next){
+  const taskId = parseInt(req.params.id);
+  const taskById = await taskService.getTask(taskId);
+  res.status(200).json(taskById);
+}
+
 export async function createTask(req, res, next) {
   const { title, completed } = req.body;
   const task = await taskService.createTask({ title, completed });
