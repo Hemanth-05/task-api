@@ -5,7 +5,15 @@ export async function getAllTasks() {
 }
 
 export async function getTask(taskId){
-    return await taskRepository.findTask(taskId);
+  const task = await taskRepository.findTask(taskId);
+
+  if (!task) {
+    const err = new Error('Task not found');
+    err.status = 404;
+    throw err;
+  }
+
+  return task;
 }
 
 export async function createTask(newTask) {

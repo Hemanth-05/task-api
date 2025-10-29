@@ -5,7 +5,7 @@ info:
 servers:
   - url: http://localhost:8080
     description: Local development server
-  - url: https://task-api-wyqa.onrender.com
+  - url: https://task-api-1-7ulu.onrender.com
     description: Production server on render
 tags:
   - name: Tasks
@@ -82,6 +82,8 @@ paths:
                 $ref: '#/components/schemas/Task'
         '400':
           $ref: '#/components/responses/BadRequest'
+        '404':
+          $ref: '#/components/responses/NotFoundError'
 components:
   schemas:
     Task:
@@ -114,3 +116,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/ValidationError'
+    NotFoundError:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Not found
